@@ -51,7 +51,7 @@ CREATE TABLE Answer (
 	answer_id 			INT,
     content 			VARCHAR(50),
     question_id			INT,
-    isCorrect			bool
+    isCorrect			ENUM('correct','incorrect')
 );
 CREATE TABLE Exam (
 	exam_id				INT,
