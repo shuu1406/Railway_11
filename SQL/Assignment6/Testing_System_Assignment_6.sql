@@ -29,66 +29,57 @@ DELIMITER $$
 CREATE PROCEDURE QuestionOfMonth()
 BEGIN
 
-	SELECT		COUNT(TypeID)
+	SELECT		*,COUNT(TypeID)
     FROM		Question
-    WHERE		MONTH(CreateDate) = Month(NOW());
+    WHERE		MONTH(CreateDate) = Month(NOW()) and YEAR(CreateDate) = YEAR(NOW())
+	GROUP BY	TypeID ;
+
 	
 END$$
 DELIMITER ;
 
 -- 4
-DROP PROCEDURE IF EXISTS MaxQuestion;
+DROP PROCEDURE IF EXISTS get_typeID_question;
 DELIMITER $$
-CREATE PROCEDURE MaxQuestion()
+CREATE PROCEDURE get_typeID_question( OUT out_typeID_of_question TINYINT UNSIGNED)
 BEGIN
-
-	WITH MAX_Count_TypeID AS(
-		SELECT		COUNT(TypeID)
-		FROM		Question 
-		GROUP BY	TypeID
-        ORDER BY	COUNT(TypeID) DESC
-		LIMIT 		1
-    )
-    SELECT 		TypeID
-    FROM		Question
-    GROUP BY 	TypeID
-    HAVING		COUNT(TypeID) = (SELECT * FROM MAX_Count_TypeID);	
-	
-END$$
-DELIMITER ;
-
-call MaxQuestion();
+		SELECT Q.TypeID INTO out_typeID_of_question
+		FROM Question Q
+		JOIN TypeQuestion TQ ON TQ.TypeID=Q.TypeID
+		GROUP BY Q.TypeID
+		HAVING COUNT(Q.QuestionID)=(SELECT COUNT(Q1.QuestionID)
+									FROM Question Q1
+									JOIN TypeQuestion TQ1 ON TQ1.TypeID=Q1.TypeID
+									GROUP BY Q1.TypeID
+									ORDER BY COUNT(Q1.QuestionID) DESC
+									LIMIT 1 )
+		ORDER BY Q.TypeID DESC
+		LIMIT 1;
+END $$
+DELIMITER $$;
 
 
 -- 5
-DROP PROCEDURE IF EXISTS FindTypeQuestion;
+DROP PROCEDURE IF EXISTS get_typeID_question5;
 DELIMITER $$
-CREATE PROCEDURE FindTypeQuestion()
+CREATE PROCEDURE get_typeID_question5()
 BEGIN
-
-	WITH MAX_Count_TypeID AS(
-		SELECT		COUNT(TypeID)
-		FROM		Question 
-		GROUP BY	TypeID
-        ORDER BY	COUNT(TypeID) DESC
-		LIMIT 		1
-    )
-    SELECT 		TQ.TypeName
-    FROM		Question Q 
-	INNER JOIN 	TypeQuestion TQ ON Q.TypeID = TQ.TypeID
-    GROUP BY 	Q.TypeID
-    HAVING		COUNT(Q.TypeID) = (SELECT * FROM MAX_Count_TypeID);		
-	
-END$$
-DELIMITER ;
-
+		DECLARE TypeID TINYINT;
+        SET		TypeID = 0;
+        CALL 	get_typeID_question(typeID);
+        SELECT	*
+        FROM	TypeQuestion T
+        WHERE	T.TypeID = TypeID;
+END $$
+DELIMITER $$;
+CALL testingsystem.get_typeID_question5();
 -- 6
 DROP PROCEDURE IF EXISTS abc;
 DELIMITER $$
 CREATE PROCEDURE abc(IN StringInput VARCHAR(50))
 BEGIN
-	SELECT GroupName, UserName
-    FROM	`Group` G
+	SELECT *
+    FROM	`Account`
     JOIN 	GroupAccount GA ON GA.GroupID = G.GroupID
     JOIN	`Account` A ON A.AccountID = GA.AccountID
     WHERE 	GroupName LIKE '%StringInput%'  OR  Username LIKE '%StringInput%' ;
@@ -97,7 +88,21 @@ BEGIN
 	
 END$$
 DELIMITER ;
-
+-- 6
+DROP PROCEDURE IF EXISTS question6;
+DELIMITER $$
+CREATE PROCEDURE question6(IN input NVARCHAR(50))
+BEGIN
+	SELECT AccountID,UserName,'Account'
+    FROM	`Account`
+    WHERE 	UserName LIKE concat('%' , input ,  '%')
+    UNION 
+    SELECT GroupID,GroupName,'Group'
+    FROM	`Group`
+    WHERE 	GroupName LIKE concat('%' , input ,  '%');
+END$$
+DELIMITER ;
+call question6('vti');
 -- 7
 DROP PROCEDURE IF EXISTS abcd;
 DELIMITER $$
