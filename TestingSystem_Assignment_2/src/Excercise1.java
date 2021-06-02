@@ -337,14 +337,60 @@ public class Excercise1 {
 			n++;
 		}
 		
+//17 10
+		System.out.println("17 10");
+		int o = 1;
+		do {
+			System.out.println("Thông tin của account thứ " + o  + " là: ");
+			System.out.println("Email: "+ accounts[o-1].email);
+			System.out.println("Full Name: " + accounts[o-1].fullName);
+			System.out.println("Phòng Ban: " + accounts[o-1].department.name);
+			o++;
+		}while(o <= accounts.length);
 		
+//17 11
+		System.out.println("17 11");
+		int i1 = 1;
+		do {
+			System.out.println("Thông tin của department thứ " + i1  + " là: ");
+			System.out.println("Id: "+ departments[i1-1].id);
+			System.out.println("Name: " + departments[i1-1].name);
+			i1++;
 		
-		
-		
-		
-		
-		
-		
+		}while(i1 <= departments.length);
+//17 13
+		System.out.println("17 13");
+		int k1 = 1;
+		do {
+			if(k1!=2) {
+			System.out.println("Thông tin của account thứ " + k1  + " là: ");
+			System.out.println("Email: "+ accounts[k1-1].email);
+			System.out.println("Full Name: " + accounts[k1-1].fullName);
+			System.out.println("Phòng Ban: " + accounts[k1-1].department.name);
+			k1++;
+			}
+		}while(k1 <= accounts.length);
+//17 14
+			System.out.println("17 14");
+			int m1 = 1;
+			do {
+				if(m1<4) {
+				System.out.println("Thông tin của account thứ " + m1  + " là: ");
+				System.out.println("Email: "+ accounts[m1-1].email);
+				System.out.println("Full Name: " + accounts[m1-1].fullName);
+				System.out.println("Phòng Ban: " + accounts[m1-1].department.name);
+				m1++;
+				}
+			}	while(m1 <= accounts.length);	
+//17 15
+			System.out.println("17 15");
+			int n1 = 0;
+			do {
+				if(n1 % 2 == 0) {
+					System.out.println(n1);
+				}
+				n1++;
+			}while(n1 <= 20);
 }
 }
 
