@@ -11,7 +11,12 @@ public class Excercise4 {
 //		cau5();
 //		cau6();
 //		cau7a();
-		cau7b();
+//		cau7b();
+//		cau8();
+//		cau9();
+//		cau10();
+//		cau11();
+		cau12();
 	}
 
 	public static void cau1() {
@@ -81,6 +86,76 @@ public class Excercise4 {
 		System.out.println(tempp);
 		}
 	
+	
+		public static void cau8() {
+			String[] groupNames = { "Java 1", "Java 2", "Java 3" };
 
+			for (String groupName : groupNames) {
+				if (groupName.contains("Java")) {
+					System.out.println(groupName);
+				}
+			}
+	}
+		public static void cau9() {
+			String[] groupNames = { "Java", "Java 2", "Java 3" };
+
+			for (String groupName : groupNames) {
+				if (groupName.equals("Java")) {
+					System.out.println(groupName);
+				}
+			}
+	}
+		public static void cau10() {
+			Scanner scanner = new Scanner(System.in);
+			String a1,a2;
+			String a3 = "";
+			a1 = scanner.nextLine();
+			a2 = scanner.nextLine();
+			for(int i = a1.length() - 1; i >= 0;i-- ) {
+				a3 = a3 + a1.substring(i,i+1);
+			}
+			if(a3.equals(a2)) {
+				System.out.println("OK");
+			}else {
+				System.out.println("KO");
+			}
+				}
+		public static void cau11() {
+			Scanner scanner = new Scanner(System.in);
+			String chuoi1 ;
+			int dem = 0;
+			chuoi1 = scanner.nextLine();
+			for(int i = 0; i < chuoi1.length();i++) {
+				if('a' == chuoi1.charAt(i) ) {
+					dem++;
+				}
+			}
+			System.out.println(dem);
+			
+				}
+		public static void cau12() {
+			Scanner scanner = new Scanner(System.in);
+			String chuoi2;
+			chuoi2 = scanner.nextLine();
+			int check = 0;
+			for (int i = 0; i < chuoi2.length(); i++) {
+	            if (Character.isLetter(chuoi2.charAt(i)) ) {	                
+	                check++;	                
+	            }
+	            if(check != chuoi2.length()) {
+                	System.out.println("True");
+                	
+                }
+                else if (check == chuoi2.length()) {
+                	System.out.println("False");
+                	
+                }
+	            
+	        } 
+			
+			
+				}
+			
+	
 }
 

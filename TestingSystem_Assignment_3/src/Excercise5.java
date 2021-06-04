@@ -83,8 +83,8 @@ public class Excercise5 {
 		}
 		}
 	public static void cau7(Department[] department) {
-		for (int i = 0; i < department.length; i++) {
-			for (int j = 0; j < department.length - 1; j++) {
+		for (int i = 0; i < department.length-1; i++) {
+			for (int j = i+1; j < department.length ; j++) {
 				if (department[i].name.substring(department[i].name.lastIndexOf(" ")+1).toUpperCase().compareTo(department[j].name.substring(department[j].name.lastIndexOf(" ")+1 ).toUpperCase()) < 0) {
 					Department temp = department[i];
 					department[i] = department[j];
