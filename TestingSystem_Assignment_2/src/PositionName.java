@@ -1,4 +1,4 @@
 
 public enum PositionName {
-	DEV,TEST;
+	DEV,TEST,SCRUMMASTER,PM;
 }

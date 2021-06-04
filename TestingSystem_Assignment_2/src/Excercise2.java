@@ -172,9 +172,9 @@ public class Excercise2 {
 		System.out.println("6");
 		Account[] accounts = { account1, account2 };
 		for (Account account : accounts) {
-			System.out.println("Email: " + account.email);
-			System.out.println("FullName: " + account.fullName);
-			System.out.println("Name Department: " + account.department.name);
+			System.out.println("|| Email     	   ||" + account.email);
+			System.out.println("|| FullName 	   ||" + account.fullName);
+			System.out.println("|| Name Department ||" + account.department.name);
 		}
 
 	}

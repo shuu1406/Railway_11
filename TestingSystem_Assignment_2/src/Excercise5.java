@@ -146,33 +146,60 @@ public class Excercise5 {
 		answer2.question = question1;
 
 		Scanner scanner = new Scanner(System.in);
-		// 1
-		for (int i = 0; i < 3; i++) {
-			int x = scanner.nextInt();
-			System.out.println(x);
+//		// 1
+//		for (int i = 0; i < 3; i++) {
+//			int x = scanner.nextInt();
+//			System.out.println(x);
+//		}
+//
+//		// 2
+//		for (int i = 0; i < 2; i++) {
+//			double y = scanner.nextDouble();
+//			System.out.println(y);
+//		}
+//		//3
+//		String hoten = scanner.nextLine();
+//		System.out.println(hoten);
+//		//4
+//		String Birthday = scanner.next();
+//		String pattern = "dd-MM-yyyy";
+//		SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+//		Date date = dateFormat.parse(Birthday);
+//		System.out.println("Input: " + date);
+//		scanner.close();
+       //5
+		question5();
+		
+		
+		
+		
+		
+	}
+	static void question5() {
+		Scanner scanner = new Scanner(System.in);
+		Account acc1 = new Account();
+		System.out.println("Mời bạn nhập vào tên người dùng: ");
+		acc1.fullName = scanner.nextLine();
+		System.out.println("Mời bạn nhập vào email người dùng: ");
+		acc1.email = scanner.nextLine();
+		System.out.println("Mời bạn nhập vào phòng ban người dùng(1-4): ");
+		System.out.println("1:Dev, 2:Test,3:Scrum Master, 4:PM");
+		Position position1 = new Position();
+		position1.id = 1;
+		String position = scanner.nextLine();
+		if(position.equals("1")) {
+			position1.positionName=PositionName.DEV;
 		}
-
-		// 2
-		for (int i = 0; i < 2; i++) {
-			double y = scanner.nextDouble();
-			System.out.println(y);
+		else if(position.equals("2")) {
+			position1.positionName=PositionName.TEST;
 		}
-		//3
-		String hoten = scanner.nextLine();
-		System.out.println(hoten);
-		//4
-		String Birthday = scanner.next();
-		String pattern = "dd-MM-yyyy";
-		SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
-		Date date = dateFormat.parse(Birthday);
-		System.out.println("Input: " + date);
-		scanner.close();
-       
-		
-		
-		
-		
-		
+		else if(position.equals("3")) {
+			position1.positionName=PositionName.SCRUMMASTER;
+		}else if(position.equals("4")) {
+			position1.positionName=PositionName.PM;
+		}
+		acc1.position = position1;
+		System.out.println(acc1.toString());
 		
 	}
 

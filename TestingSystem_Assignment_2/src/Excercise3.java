@@ -144,6 +144,47 @@ public class Excercise3 {
 		answer2.question = question1;
 
 		// 1
+		System.out.println("q1");
+		Locale locale = new Locale("vi", "VI");
+		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
+		String date = dateFormat.format(new Date());
+		System.out.println(date);
+		//2
+		System.out.println("q2");
+		String pattern = "yyyy-MM-dd HH:mm:ss";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 		
+		Exam[] exams = {exam1, exam2};
+		for(Exam exam : exams) {
+			date = simpleDateFormat.format(exam.createDate);
+			System.out.println(exam.id + " : " + date);
+		//3
+			System.out.println("q3");
+		pattern = "yyyy";
+		simpleDateFormat = new SimpleDateFormat(pattern);
+		for (Exam exam : exams) {
+			date = simpleDateFormat.format(exam.createDate);
+			System.out.println(exam.id + ": " + date);
+			}
+
+		//4
+		System.out.println("q4");
+		pattern = "yyyy-MM";
+		simpleDateFormat = new SimpleDateFormat(pattern);
+		for(Exam exam : exams) {
+			date = simpleDateFormat.format(exam.createDate);
+			System.out.println(exam.id + " : " + date);		
+		//5
+			System.out.println("q5");
+		pattern = "MM-dd";
+		simpleDateFormat = new SimpleDateFormat(pattern);
+		for(Exam exam : exams) {
+			date = simpleDateFormat.format(exam.createDate);
+			System.out.println(exam.id + " : " + date);		
+				
+		}
 	}
 }
+	}
+}
+
