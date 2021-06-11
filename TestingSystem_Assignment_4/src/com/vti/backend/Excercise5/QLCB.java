@@ -1,55 +1,46 @@
 package com.vti.backend.Excercise5;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-import com.vti.entity.excercise5.CanBo;
-import com.vti.entity.excercise5.CongNhan;
-import com.vti.entity.excercise5.KySu;
-import com.vti.entity.excercise5.NhanVien;
+import com.vti.entity.excercise5.Q1.CanBo;
+import com.vti.entity.excercise5.Q1.Gender;
 
 public class QLCB {
-	private List<CanBo> canBos = new ArrayList<>();
-	private Scanner scanner;
-	public QLCB() {
-		canBos = new ArrayList<>();
-		scanner = new Scanner(System.in);
-	}
-	public void addCanBo() {
-		System.out.println("Bạn muốn nhập vào: 1 Công nhân, 2 Kỹ Sư, 3 Nhân Viên");
-		int temp = scanner.nextInt();
-		switch(temp) {
-		case 1:
-			canBos.add(new CongNhan());
-			break;
-		case 2:
-			canBos.add(new KySu());
-			break;
-		case 3:
-			canBos.add(new NhanVien());
-			break;
-		}
-		System.out.println("Nhập thành công cán bộ" );
-	}
-
-	public void findByName() {
-
-	}
-
-	public void printListCanBos() {
-		for (CanBo canBo : canBos) {
-			System.out.println(canBo);
-		}
-	}
-
-	public void deleteCanBo(String name) {
-
-	}
-
-	public void deleteCanBo( ) {
+	List<CanBo> dsCanBo = new ArrayList<CanBo>();
+	public void addNewCanBo() {
 		Scanner scanner = new Scanner(System.in);
-		String inputName = scanner.nextLine();
-		deleteCanBo(inputName);
+		System.out.println("Moi ban nhap vao ten can bo: ");
+		String name = scanner.nextLine();
+		CanBo canbo1 = new  CanBo(name,0,Gender.UNKNOWN,"") {};	
+		dsCanBo.add(canbo1);
+		
+	}
+	public void showInfoDsCanBo() {
+		for (CanBo canbo : dsCanBo) {
+			System.out.println(canbo);
+		}
+	}
+	public void searchByName() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Moi ban nhap vao ten can bo muon tim: ");
+		String name = scanner.nextLine();
+		for (CanBo canbo : dsCanBo) {
+			if(canbo.getHoTen().toLowerCase().indexOf(name.toLowerCase()) >= 0) {
+				System.out.println(canbo);
+			}
+		}
+	}
+	public void deleteByName() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Moi ban nhap vao ten can bo muon xoa: ");
+		String name = scanner.nextLine();
+		for(int i = 0; i < dsCanBo.size();i++) {
+			if(dsCanBo.get(i).getHoTen().toLowerCase().indexOf(name.toLowerCase()) >= 0) {
+				dsCanBo.remove(i);
+				i --;
+			}
+		}
 	}
 }

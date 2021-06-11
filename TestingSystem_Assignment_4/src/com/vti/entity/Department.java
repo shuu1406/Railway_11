@@ -7,6 +7,13 @@ public class Department {
 	public String toString() {
 		return "Department [id=" + id + ", name=" + name + "]";
 	}
+	public Department(String name) {
+		super();
+		this.name = name;
+	}
+	public Department() {
+		super();
+	}
 	
 	}
 	
